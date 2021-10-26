@@ -5,6 +5,7 @@
  */
 package teste.basicoUser;
 
+import infra.DAO;
 import infra.JpaUtil;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -22,25 +23,15 @@ public class ObterUsuarios {
 
     public static void main(String[] args) {
 
-//        EntityManagerFactory emf = Persistence
-//                .createEntityManagerFactory("exercicios_java");
-//        EntityManager em = emf.createEntityManager();
-        
-        EntityManager manager = JpaUtil.getEntityManager();
+        DAO<Usuario> dao = new DAO<>(Usuario.class);
 
-        String jpql = "select u from Usuario u";
-        TypedQuery<Usuario> query = manager.createQuery(jpql, Usuario.class);
-        //query.setMaxResults(3);
-        
-        List<Usuario> users = query.getResultList();
-        
-        for(Usuario user: users){
-            System.out.println("ID => "+user.getId()
-            +"E-mail => "+user.getEmail());
+        List<Usuario> list = dao.getAll(Integer.MAX_VALUE, 0);
+
+        for (Usuario usuario : list) {
+            System.out.println(usuario.getNome() + " tem o email "
+                    + "" + usuario.getEmail());
         }
-        
-        manager.close();
-        JpaUtil.close();
+
     }
 
 }

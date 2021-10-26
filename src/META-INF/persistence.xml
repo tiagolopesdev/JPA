@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" 
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence              
-        http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-    <persistence-unit name="exercicios_java">
-        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>modelo.basico.Usuario</class>
-        <class>modelo.basico.Product</class>
-        <class>modelo.oneToOne.Assento</class>
-        <class>modelo.oneToOne.Cliente</class>
-        <class>modelo.onToMany.Pedido</class>
-        <class>modelo.onToMany.ItemPedido</class>
-        <class>modelo.manyToMany.Comercio</class>
-        <class>modelo.manyToMany.Produto</class>
-        <properties>
-            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/study"/>
-            <property name="javax.persistence.jdbc.user" value="root"/>
-            <property name="javax.persistence.jdbc.password" value="bd1374"/>
-      
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL57Dialect"/>
-            <property name="hibernate.show_sql" value="true"/>
-            <property name="hibernate.format_sql" value="true"/>
-            <property name="hibernate.hbm2ddl.auto" value="update"/>
-        </properties>
-    </persistence-unit>
- 
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence                       http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="exercicios_java">
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+    <class>modelo.basico.Usuario</class>
+    <class>modelo.basico.Product</class>
+    <class>modelo.oneToOne.Assento</class>
+    <class>modelo.oneToOne.Cliente</class>
+    <class>modelo.onToMany.Pedido</class>
+    <class>modelo.onToMany.ItemPedido</class>
+    <class>modelo.manyToMany.Comercio</class>
+    <class>modelo.manyToMany.Produto</class>
+    <class>modelo.heranca.single_table.Esportivo</class>
+    <class>modelo.heranca.single_table.Carro</class>
+    <class>modelo.heranca.joined.Funcionario</class>
+    <class>modelo.heranca.joined.Professor</class>
+    <class>modelo.heranca.joined.Zelador</class>
+    <properties>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/study"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.password" value="bd1374"/>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL57Dialect"/>
+      <property name="hibernate.show_sql" value="true"/>
+      <property name="hibernate.format_sql" value="true"/>
+      <property name="hibernate.hbm2ddl.auto" value="update"/>
+    </properties>
+  </persistence-unit>
 </persistence>

@@ -51,7 +51,7 @@ public class DAO<E> {
         try {
             em.getTransaction().commit();
         } catch (Exception e) {
-            System.out.println("Ops! erro para fechar transação. "+e.getMessage());
+            System.out.println("Ops! erro para fechar transação. " + e.getMessage());
         }
         return this;
     }
@@ -68,6 +68,16 @@ public class DAO<E> {
     public DAO<E> Remove(E entidade, int primaryKey) {
         entidade = em.find(classe, primaryKey);
         em.remove(entidade);
+        return this;
+    }
+
+    public DAO<E> Update(E entidade) {
+        try { 
+            em.merge(entidade);
+            System.out.println("Registro " + entidade.getClass() + "atualizado");
+        } catch (Exception e) {
+            System.out.println("Erro ao atualizar :"+e.getMessage());
+        }
         return this;
     }
 

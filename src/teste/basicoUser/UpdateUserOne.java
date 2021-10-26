@@ -5,6 +5,7 @@
  */
 package teste.basicoUser;
 
+import infra.DAO;
 import infra.JpaUtil;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -17,23 +18,24 @@ import modelo.basico.Usuario;
 public class UpdateUserOne {
 
     public static void main(String[] args) {
-        EntityManager manager = JpaUtil.getEntityManager();
-        EntityTransaction tx = manager.getTransaction();
+
+        DAO<Usuario> dao = new DAO<>(Usuario.class);
+
+        dao.OpenTransction();
+
+        Usuario user = dao.getOneId(8);
+
+        System.out.println(user.getNome() + " Registro a ser alterado\n");
+
+        user.setNome("João Gustavo");
+        user.setEmail("joaoGustavo@gmail.com");
+
+        dao.Update(user);
+
+        System.out.println(user.getNome()+" - alteração");
         
-        tx.begin();
-        
-        Usuario user = manager.find(Usuario.class, 4);
-        System.out.println("Nome: "+user.getNome());
-        
-        user.setNome("Clara");
-        user.setEmail("clara@gmail.com");
-        
-        manager.merge(user);
-        
-        manager.getTransaction().commit();
-        
-        manager.close();
-        JpaUtil.close();
+        dao.CloseTransction().closeDAO();
+
     }
 
 }

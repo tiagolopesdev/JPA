@@ -20,17 +20,10 @@ import modelo.basico.Usuario;
 public class ObterUsuario {
 
     public static void main(String[] args) {
-
-//        EntityManagerFactory emf = Persistence.
-//                createEntityManagerFactory("exercicios_java");
-//        EntityManager em = emf.createEntityManager();
-//
-//        EntityManager manager = JpaUtil.getEntityManager();
-//        
-//        Usuario user = manager.find(Usuario.class, 2);
-//        System.out.println("\nUsuario pesquisado "+user.getNome());
-//        
-//        manager.close();
-//        JpaUtil.close();
+        
+        DAO<Usuario> dao = new DAO<>(Usuario.class);
+        
+        System.out.println(dao.getOneId(10).getNome());
+        dao.closeDAO();
     }
 }

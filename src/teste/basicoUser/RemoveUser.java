@@ -34,7 +34,7 @@ public class RemoveUser {
         
         infraUser.OpenTransction();
         
-        infraUser.Remove(user, 6);
+        infraUser.Remove(user, 13);
         
         infraUser.CloseTransction();
     }

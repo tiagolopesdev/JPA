@@ -22,35 +22,26 @@ import modelo.basico.Usuario;
 public class NovoUsuario {
 
     public static void main(String[] args) {
-
-//        EntityManagerFactory emf = Persistence.
-//                createEntityManagerFactory("exercicios_java");
-//        EntityManager em = emf.createEntityManager();
-//
-//        Usuario newUser1 = new Usuario("Djalma", "djalma@gmail.com");
-//        Usuario newUser2 = new Usuario("Carlos", "carlo@gmail.com");
-//        Usuario newUser3 = new Usuario("Geovana", "geovana@gmail.com");
-//        Usuario newUser4 = new Usuario("Ana", "ana@gmail.com");
-//        Usuario newUser5 = new Usuario("Bia", "bia@gmail.com");
-//
-//        List<Usuario> users = Arrays.asList(newUser1, newUser2, newUser3, 
-//                newUser4, newUser5);
-//
-//        Predicate<Usuario> verificaName = a -> a.getNome() != "";
-//        em.getTransaction().begin();
-//        for (Usuario user : users) {
-//            em.persist(user);
-//        }
-//
-//        em.getTransaction().commit();
-//
-//        em.close();
-//        emf.close();
         
         Usuario newUser = new Usuario("Lopes", "lopes@gmail.com");
-        DAO<Usuario> infra = new DAO<>(Usuario.class);
-        infra.OpenTransction().include(newUser).CloseTransction().closeDAO();
+        Usuario newUser1 = new Usuario("Djalma", "djalma@gmail.com");
+        Usuario newUser2 = new Usuario("Carlos", "carlo@gmail.com");
+        Usuario newUser3 = new Usuario("Geovana", "geovana@gmail.com");
+        Usuario newUser4 = new Usuario("Ana", "ana@gmail.com");
+        Usuario newUser5 = new Usuario("Bia", "bia@gmail.com");
+
+        List<Usuario> users = Arrays.asList(newUser, newUser1, newUser2, newUser3, 
+                newUser4, newUser5);
         
+        DAO<Usuario> infra = new DAO<>(Usuario.class);
+        
+        infra.OpenTransction();
+        
+        for (Usuario user : users) {
+            infra.include(user);
+        }
+        
+        infra.CloseTransction().closeDAO();
 
     }
 }
